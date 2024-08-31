@@ -16,16 +16,20 @@ public class Main {
         int clientOS2 = 0;
         int clientDeviceYear = 2015;
 
-        if (clientOS2 == 0) {
-            if (clientDeviceYear < 2015) {
-                System.out.println("Установите облегченную версию приложения для iOS по ссылке");
-            } else {
-                System.out.println("Установите версию приложения для iOS по ссылке");
-            }
-        } else if (clientDeviceYear < 2015) {
-            System.out.println("Установите облегченную версию приложения для Android по ссылке");
-        } else {
-            System.out.println("Установите версию приложения для Android по ссылке");
+        switch (clientOS2) {
+            case 0:
+                if (clientDeviceYear < 2015) {
+                    System.out.println("Установите облегченную версию приложения для iOS по ссылке");
+                } else {
+                    System.out.println("Установите версию приложения для iOS по ссылке");
+                }
+                break;
+            case 1:
+                if (clientDeviceYear < 2015) {
+                    System.out.println("Установите облегченную версию приложения для Android по ссылке");
+                } else {
+                    System.out.println("Установите версию приложения для Android по ссылке");
+                }
         }
 
         System.out.println();
@@ -51,20 +55,19 @@ public class Main {
         int deliveryDistance = 95;
         int days = 0;
 
-        if (deliveryDistance > 0) {
-            days++;
-            if (deliveryDistance > 20) {
-                days++;
-                if (deliveryDistance > 60) {
-                    days++;
-                    if (deliveryDistance > 100) {
-                        days = 0;
-                    }
-                }
-            }
+        if (0 < deliveryDistance && deliveryDistance < 20) {
+            days += 1;
+        } else if (20 <= deliveryDistance && deliveryDistance < 60) {
+            days += 2;
+        } else if (60 <= deliveryDistance && deliveryDistance < 100) {
+            days += 3;
+        } else {
+            System.out.println("Доставки нет");
         }
 
-        System.out.printf(days != 0 ? "Потребуется %d дней доставки %n" : "Доставки нет", days);
+        if (days != 0) {
+            System.out.printf("Потребуется %d дней доставки %n", days);
+        }
         System.out.println();
 
 
