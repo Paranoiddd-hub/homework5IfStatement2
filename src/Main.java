@@ -38,15 +38,15 @@ public class Main {
         //Task 3
         int year = 2021;
 
-        if (year % 400 == 0) {
-            System.out.printf("Год %d високосный, потому что он 400-ый %n", year);
-        } else if (year % 100 == 0) {
-            System.out.printf("Год %d невисокосный, потому что он 100-ый %n", year);
-        } else if (year % 4 == 0) {
-            System.out.printf("Год %d високосный, потому что он 4-ый %n", year);
-        } else {
-            System.out.printf("Год %d невисокосный, потому что не 4-ый или 400-ый %n", year);
+        if (!(year > 1584)) {
+            System.out.println("Год должен быть больше 1584");
+            return;
         }
+        if ((year % 4 == 0 &&  year % 100 != 0) || year % 400 == 0) {
+            System.out.printf("Год %d високосный %n", year);
+            return;
+        }
+        System.out.printf("Год %d невисокосный %n", year);
 
         System.out.println();
 
